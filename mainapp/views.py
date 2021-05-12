@@ -104,7 +104,7 @@ class ChangeQTYView(CartMixin, View):
         cart_product = CartProduct.objects.get(
             user=self.cart.owner, cart=self.cart, content_type=content_type, object_id=product.id
         )
-        qty = int(request.POST.get('qty'))
+        qty = int(request.GET.get('qty'))
         cart_product.qty = qty
         cart_product.save()
         recalc_cart(self.cart)
